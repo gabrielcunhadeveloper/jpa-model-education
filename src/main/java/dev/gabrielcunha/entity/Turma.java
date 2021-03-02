@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @Entity
-
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Turma {
 
 	@Id
