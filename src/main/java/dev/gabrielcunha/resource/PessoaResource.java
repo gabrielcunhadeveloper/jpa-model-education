@@ -45,6 +45,7 @@ public class PessoaResource {
 			pessoaDoBancoDados.setCpf(pessoa.getCpf());
 			pessoaDoBancoDados.setNome(pessoa.getNome());
 			pessoaDoBancoDados.setEmail(pessoa.getEmail());
+			pessoaCriadaOuAtualizada = pessoaRepo.save(pessoaDoBancoDados);
 		} else {
 			pessoaCriadaOuAtualizada = pessoaRepo.save(pessoa);
 		}

@@ -8,13 +8,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
 @Entity
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class MatriculaDisciplinaPessoa {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	
+	@EqualsAndHashCode.Include			
 	private Long id;
 
 	@ManyToOne
