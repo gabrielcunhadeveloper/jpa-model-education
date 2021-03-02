@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -78,8 +79,16 @@ public class PessoaResource {
 	}	
     
     @DeleteMapping("/{id}")
-    public void excluir(@PathVariable("id") Long id) {
+    public ResponseEntity<?> excluir(@PathVariable("id") Long id) {
+    	Optional<Pessoa> pessoaBanco = pessoaRepo.findById(id);
+    	
+    	if (!pessoaBanco.isPresent()) {
+    		return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    	}
+    	
     	pessoaRepo.deleteById(id);
+    	
+    	return ResponseEntity.ok().build();
     }    
 	
 }
